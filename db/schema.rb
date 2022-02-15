@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_15_085124) do
+ActiveRecord::Schema.define(version: 2022_02_15_120949) do
+
+  create_table "sleep_records", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "status", default: 0
+    t.datetime "completed_at"
+    t.bigint "user_id", null: false
+    t.index ["status"], name: "index_sleep_records_on_status"
+    t.index ["user_id"], name: "index_sleep_records_on_user_id"
+  end
 
   create_table "user_follows", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -27,6 +37,7 @@ ActiveRecord::Schema.define(version: 2022_02_15_085124) do
     t.string "name"
   end
 
+  add_foreign_key "sleep_records", "users"
   add_foreign_key "user_follows", "users"
   add_foreign_key "user_follows", "users", column: "follower_id"
 end
