@@ -14,3 +14,8 @@ group :development, :test do
   gem 'pry-rails', '0.3.9'
   gem 'listen', '~> 3.2'
 end
+
+group :development, :test do
+  gem 'rspec-rails', '5.1.0'
+  gem 'simplecov', '0.21.2'
+end
