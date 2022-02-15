@@ -13,3 +13,6 @@ en:
       record_not_found:
         code: 1004
         message: 'Record not exists or completed'
+      undeleted:
+        code: 1005
+        message: 'Record could not be deleted'

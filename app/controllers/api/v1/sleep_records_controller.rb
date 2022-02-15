@@ -1,7 +1,7 @@
 class Api::V1::SleepRecordsController < ApplicationController
   before_action :authenticate_user
   before_action :validate_status, only: %w(create)
-  before_action :validate_record, only: %w(complete)
+  before_action :validate_record, only: %w(complete, delete)
 
   def create
     sleep_record = current_user.sleep_records.new
@@ -21,6 +21,15 @@ class Api::V1::SleepRecordsController < ApplicationController
     end
 
     render_response_error(:unsaved)
+  end
+
+  def delete
+    if @sleep_record.delete
+      render json: @sleep_record
+      return
+    end
+
+    render_response_error(:undeleted)
   end
 
   private

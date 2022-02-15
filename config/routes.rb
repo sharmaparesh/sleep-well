@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
         member do
           put ':id/complete', to: 'sleep_records#complete'
+          delete ':id', to: 'sleep_records#delete'
         end
       end
     end
