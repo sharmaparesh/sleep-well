@@ -5,6 +5,10 @@ Rails.application.routes.draw do
         collection do
           post 'create', to: 'sleep_records#create'
         end
+
+        member do
+          put ':id/complete', to: 'sleep_records#complete'
+        end
       end
     end
   end

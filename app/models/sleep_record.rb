@@ -3,11 +3,16 @@ class SleepRecord < ApplicationRecord
 
   belongs_to :user
 
+  def complete
+    self.status = Constants::SleepRecordStatus::COMPLETED
+    self.completed_at = Time.now
+  end
+
   def completed?
     status == Constants::SleepRecordStatus::COMPLETED
   end
 
-  def initialized
+  def initialized?
     status == Constants::SleepRecordStatus::INITIALIZED
   end
 
