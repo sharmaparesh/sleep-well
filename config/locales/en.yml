@@ -25,3 +25,6 @@ en:
       already_followed:
         code: 1008
         message: 'Already followed this user'
+      not_followed_yet:
+        code: 1009
+        message: 'Not follow this user yet'

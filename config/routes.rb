@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       resource :users, only: [] do
         collection do
           post 'follow', to: 'users#follow'
+          post 'unfollow', to: 'users#unfollow'
         end
       end
     end
