@@ -1,3 +1,3 @@
 class SleepRecordSerializer < ActiveModel::Serializer
-  attributes :id, :created_at, :completed_at, :sleep_length
+  attributes :id, :status, :created_at, :completed_at, :sleep_length
 end

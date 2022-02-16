@@ -21,3 +21,4 @@ group :development, :test do
 end
 
 gem 'active_model_serializers', '0.10.13'
+gem 'kaminari', '1.2.2'

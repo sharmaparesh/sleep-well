@@ -1,7 +1,18 @@
 class Api::V1::SleepRecordsController < ApplicationController
   before_action :authenticate_user
   before_action :validate_status, only: %w(create)
-  before_action :validate_record, only: %w(complete, delete)
+  before_action :validate_record, only: %w(complete delete)
+
+  def index
+    sleep_records = current_user.sleep_records
+                                .page(current_page)
+                                .order(created_at: :desc)
+    pagination = load_pagination_data(sleep_records)
+
+    render json: ListSleepRecordSerializer.new(
+      sleep_records: sleep_records, pagination: pagination
+    ).to_json
+  end
 
   def create
     sleep_record = current_user.sleep_records.new
@@ -45,5 +56,15 @@ class Api::V1::SleepRecordsController < ApplicationController
     return if @sleep_record && @sleep_record.initialized?
 
     render_response_error(:record_not_found)
+  end
+
+  def current_page
+    params[:page].present? ? params[:page].to_i : 1
+  end
+
+  def load_pagination_data(resource)
+    {
+      current_page: current_page, total_page: resource.total_pages
+    }
   end
 end

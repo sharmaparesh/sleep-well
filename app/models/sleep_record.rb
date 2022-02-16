@@ -19,6 +19,6 @@ class SleepRecord < ApplicationRecord
   def sleep_length
     return unless completed?
 
-    completed_at - created_at
+    completed_at.to_i - created_at.to_i
   end
 end
