@@ -12,6 +12,12 @@ Rails.application.routes.draw do
           delete ':id', to: 'sleep_records#delete'
         end
       end
+
+      resource :users, only: [] do
+        collection do
+          post 'follow', to: 'users#follow'
+        end
+      end
     end
   end
 end

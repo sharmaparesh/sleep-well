@@ -16,3 +16,12 @@ en:
       undeleted:
         code: 1005
         message: 'Record could not be deleted'
+      user_not_found:
+        code: 1006
+        message: 'User not exists'
+      missed_params:
+        code: 1007
+        message: 'Missed params'
+      already_followed:
+        code: 1008
+        message: 'Already followed this user'
