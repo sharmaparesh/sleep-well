@@ -46,7 +46,7 @@ class Api::V1::SleepRecordsController < ApplicationController
 
   def friend_records
     sleep_records = @user.sleep_records.last_seven_days
-    sleep_records = sleep_records.sort_by(&:sleep_length)
+    sleep_records = sleep_records.sort_by(&:sleep_length).reverse!
 
     render json: ListSleepRecordSerializer.new(sleep_records: sleep_records).to_json
   end
