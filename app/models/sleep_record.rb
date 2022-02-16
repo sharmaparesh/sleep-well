@@ -1,5 +1,6 @@
 class SleepRecord < ApplicationRecord
   scope :initialized, -> { where(status: Constants::SleepRecordStatus::INITIALIZED) }
+  scope :last_seven_days, -> { where('created_at > ?', 7.days.ago.beginning_of_day) }
 
   belongs_to :user
 
@@ -17,7 +18,7 @@ class SleepRecord < ApplicationRecord
   end
 
   def sleep_length
-    return unless completed?
+    return 0 unless completed?
 
     completed_at.to_i - created_at.to_i
   end

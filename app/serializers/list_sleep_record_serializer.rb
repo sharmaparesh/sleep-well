@@ -8,7 +8,7 @@ class ListSleepRecordSerializer < ActiveModel::Serializer
   end
 
   def pagination
-    object[:pagination]
+    object[:pagination] || {}
   end
 
   def links

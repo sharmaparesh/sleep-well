@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       resources :sleep_records, only: [] do
         collection do
           get '', to: 'sleep_records#index'
+          get 'friend_records', to: 'sleep_records#friend_records'
           post 'create', to: 'sleep_records#create'
         end
 

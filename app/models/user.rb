@@ -5,4 +5,8 @@ class User < ApplicationRecord
   def asleep?
     sleep_records.initialized.exists?
   end
+
+  def followed?(user)
+    user.followers.with_follower(id).exists?
+  end
 end

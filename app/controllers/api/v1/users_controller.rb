@@ -34,7 +34,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def validate_following
-    return unless @user.followers.with_follower(current_user.id).exists?
+    return unless current_user.followed?(@user)
 
     render_response_error(:already_followed)
   end
